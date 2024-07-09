@@ -4,15 +4,17 @@ on:
     branches:
      - main
 jobs:
-  SFTP-Deploy-Action:
-    name: SFTP-Deploy-Action
+  sftp-deploy-action:
+    - name: SFTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: main
+          ref: test-branch
+
+
 
     - name: SFTP-Deploy-Action
       uses: milanmk/actions-file-deployer@master
