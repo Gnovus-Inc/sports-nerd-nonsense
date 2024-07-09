@@ -4,12 +4,18 @@ on:
     branches:
      - main
 jobs:
-  build:
-    runs-on: ubuntu-latest  
-    steps: 
-    - uses: actions/checkout@v3
-    - name: GitHub Action Deploy to WP Engine
-      uses: wpengine/github-action-wpe-site-deploy@v3
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v4
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SNN_SSHG_KEY_PRIVATE }} 
-        WPE_ENV: sportsnerdnonsense.com 
+        server: wwwsnn.sftp.wpengine.com
+        username: wwwsnn-github
+        password: ${{ secrets.SFTP_PASSWORD }}
+        port: 2222
+        protocol: ftps
