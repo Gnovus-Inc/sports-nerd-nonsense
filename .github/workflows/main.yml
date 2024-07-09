@@ -10,12 +10,13 @@ jobs:
     steps:
     - name: Get latest code
       uses: actions/checkout@v4
-    
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+
+    - name: SFTP-Deploy-Action
+      uses: milanmk/actions-file-deployer@master
       with:
-        server: wwwsnn.sftp.wpengine.com
-        username: wwwsnn-github
-        password: ${{ secrets.SFTP_PASSWORD }}
-        port: 2222
-        protocol: ftps
+        remote-protocol: sftp
+        remote-host: wwwsnn.sftp.wpengine.com
+        remote-user: wwwsnn-github
+        remote-password: ${{ secrets.SFTP_PASSWORD }}
+        remote-path: /
+        remote-port: 2222
