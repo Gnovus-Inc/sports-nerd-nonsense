@@ -4,24 +4,23 @@ on:
     branches:
      - main
 jobs:
-  sftp-deploy-action:
-    - name: SFTP-Deploy-Action
+  SFTP-Deploy-Action:
+    name: SFTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: test-branch
+          ref: main
+      - name: SFTP-Deploy-Action
+        uses: milanmk/actions-file-deployer@master
+        with:
+          remote-protocol: sftp
+          remote-host: wwwsnn.sftp.wpengine.com
+          remote-user: wwwsnn-github
+          remote-password: ${{ secrets.SFTP_PASSWORD }}
+          remote-path: /
+          remote-port: 2222
 
 
-
-    - name: SFTP-Deploy-Action
-      uses: milanmk/actions-file-deployer@master
-      with:
-        remote-protocol: sftp
-        remote-host: wwwsnn.sftp.wpengine.com
-        remote-user: wwwsnn-github
-        remote-password: ${{ secrets.SFTP_PASSWORD }}
-        remote-path: /
-        remote-port: 2222
