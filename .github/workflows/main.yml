@@ -17,10 +17,12 @@ jobs:
         uses: milanmk/actions-file-deployer@master
         with:
           remote-protocol: sftp
-          remote-host: wwwsnn.sftp.wpengine.com
-          remote-user: wwwsnn-github
+          remote-host: ${{ secrets.SFTP_HOST }}
+          remote-user: ${{ secrets.SFTP_USER }}
           remote-password: ${{ secrets.SFTP_PASSWORD }}
           remote-path: /
           remote-port: 2222
 
 
+          
+          
