@@ -1,0 +1,24 @@
+name: Deploy to WP Engine
+on:
+  push:
+    branches:
+     - staging
+jobs:
+  SFTP-Deploy-Action:
+    name: SFTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: staging
+      - name: SFTP-Deploy-Action
+        uses: milanmk/actions-file-deployer@master
+        with:
+          remote-protocol: sftp
+          remote-host: ${{ secrets.SFTP_HOST_STG }}
+          remote-user: ${{ secrets.SFTP_USER_STG }}
+          remote-password: ${{ secrets.SFTP_PASSWORD_STG }}
+          remote-path: /
+          remote-port: 2222
