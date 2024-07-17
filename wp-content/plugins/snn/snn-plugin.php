@@ -119,15 +119,33 @@ function articles_meta() {
         ["channel_img", 'Channel IMG'],
         ["published", 'Published']
     ];
-  global $post;
-  $custom = get_post_custom($post->ID);
-  foreach($customStringFields as $customField) {
-      $value = $custom[$customField[0]][0];
-  ?>
-  <p><label><?= $customField[1]; ?> :</label><br />
-  <input type="text" cols="50" rows="5" name="<?= $customField[0]; ?>" value="<?= $value; ?>" /></p>
-  <?php
-  }
+
+    $customArrayFields = [
+        ["authors", "Authors"],
+        ["tone", "Tone"],
+        ["sentiment", "Sentiment"],
+        ["discussed_teams", "Discussed Teams"],
+        ["discussed_players", "Discussed Players"],
+        ["main_points", "Main Points"],
+        ["tags", "Tags"]
+    ];
+    global $post;
+    $custom = get_post_custom($post->ID);
+    foreach($customStringFields as $customField) {
+        $value = $custom[$customField[0]][0];
+    ?>
+        <p><label><?= $customField[1]; ?> :</label><br />
+        <input type="text" cols="50" rows="5" name="<?= $customField[0]; ?>" value="<?= $value; ?>" /></p>
+    <?php
+    }
+
+    foreach($customArrayFields as $customField) {
+    $value = json_decode($custom[$customField[0]][0], true);
+    ?>
+        <p><label><?= $customField[1]; ?> :</label><br />
+        <input type="text" cols="50" rows="5" name="<?= $customField[0]; ?>" value="<?= join(', ', $value); ?>" /></p>
+    <?php
+    }
 }
 
 add_action('save_post', 'save_ssn_details');
@@ -149,8 +167,22 @@ function save_ssn_details(){
         ["channel_img", 'Channel IMG'],
         ["published", 'Published']
     ];
+
+    $customArrayFields = [
+        ["authors", "Authors"],
+        ["tone", "Tone"],
+        ["sentiment", "Sentiment"],
+        ["discussed_teams", "Discussed Teams"],
+        ["discussed_players", "Discussed Players"],
+        ["main_points", "Main Points"],
+        ["tags", "Tags"]
+    ];
     foreach($customStringFields as $customField) {
         update_post_meta($post->ID, $customField[0], $_POST[$customField[0]]);
+    }
+
+    foreach($customArrayFields as $customField) {
+        update_post_meta($post->ID, $customField[0], json_encode(explode(',', $_POST[$customField[0]])));
     }
   }
 // custom fields
@@ -265,24 +297,47 @@ function post_snn_data(WP_REST_Request $request) {
  	$record = $request->get_params();
 
  	$data = [];
-	$wp_error = true;
+	$wp_error = null;
  	$queryArgs = [
  		'post_type' => 'snn_article',
- 		'meta_key' => '_id',
+ 		'meta_key' => 'article_id',
  		'meta_compare' => '=',
  	];
+    $customStringFields = [
+        "teaser",
+        "discussed_game",
+        "sport",
+        "league",
+        "source",
+        "model",
+        "title",
+        "channel",
+        "channel_url",
+        "channel_img",
+        "published"
+    ];
+    $customArrayFields = [
+        "authors",
+        "tone",
+        "sentiment",
+        "discussed_teams",
+        "discussed_players",
+        "main_points",
+        "tags"
+    ];
+    $id = null;
+    $snn_articleId = uniqid('feed_', true);
 
-    $queryArgs['meta_value'] = $record['_id'];
+    $queryArgs['meta_value'] = $snn_articleId;
     $query = new WP_Query($queryArgs);
 
     $record['post_type'] = $queryArgs['post_type'];
-    $snn_articleId = $record['_id'];
-
     // Insert post if not exists
-    $record['post_author'] = get_user_id_post($record['authors'][0]);
+    $record['post_author'] = get_user_id_post('SNNWriter');
     $record['post_content'] = $record['discussed_game'];
     $record['post_title'] = $record['title'];
     $record['post_excerpt'] = $record['teaser'];
+    
     if (!$query->have_posts()) {
         $record['post_status'] = 'publish';
         
@@ -292,16 +347,21 @@ function post_snn_data(WP_REST_Request $request) {
         $tags = isset($record['tags_input']) ? explode(',', $record['tags_input']) : [];
         // $symbols = isset($record['symbols']) ? explode(',', $record['symbols']) : [];
         
-        update_post_meta($id, '_id', $snn_articleId);
-        update_snn_article_taxonomies($id, $tags);
+        update_post_meta($id, 'snn_article_id', $snn_articleId);
+        foreach($customStringFields as $customField) {
+            update_post_meta($id, $customField, $record[$customField]);
+        }
 
+        foreach($customArrayFields as $customField) {
+            update_post_meta($id, $customField, json_encode($record[$customField]));
+        }
+
+        update_snn_article_taxonomies($id, $tags);
+        
         if ($record['featured_image_url'] !== '') {
             upload_featured_image($id, $record['featured_image_url']);
         }
-    } else {
-        $query->the_post();
-        $id = get_the_ID();
-        $id = wp_update_post($record, $wp_error);
+        // wp_update_post($record, $wp_error);
     }
 
     if ($id) {
@@ -310,7 +370,7 @@ function post_snn_data(WP_REST_Request $request) {
     }
 
     if ($wp_error) {
-        $data[$record['_id']]['error'] = $wp_error;
+        $data[$snn_articleId]['error'] = $wp_error;
     }
 
  	return $data;
