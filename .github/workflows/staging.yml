@@ -22,3 +22,4 @@ jobs:
           remote-password: ${{ secrets.SFTP_PASSWORD_STG }}
           remote-path: /
           remote-port: 2222
+
