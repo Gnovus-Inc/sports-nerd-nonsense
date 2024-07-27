@@ -1,0 +1,91 @@
+/*
+Theme Name: Sports Nerds Nonsense
+Theme URI: https://wordpress.org/themes/twentytwentythree-child
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Twenty Twenty-Three is designed to take advantage of the new design tools introduced in WordPress 6.1. With a clean, blank base as a starting point, this default theme includes ten diverse style variations created by members of the WordPress community. Whether you want to build a complex or incredibly simple website, you can do it quickly and intuitively through the bundled styles or dive into creation and full customization yourself.
+Requires at least: 6.1
+Tested up to: 6.6
+Requires PHP: 5.6
+Version: 1.5
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Text Domain: twentytwentythree
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+*/
+.accordion-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.date-channel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.accordion-content {
+    display: none;
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    min-height: 250px;
+}
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.card-body {
+    padding: 15px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 30px;
+}
+.card-title {
+    padding: 0 15px;
+    font-size: 30px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pagination a {
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #007bff;
+}
+.page-numbers.current {
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: green;
+}
+.pagination a:hover {
+    background-color: #f1f1f1;
+}
+@media (max-width: 992px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+    .card {
+      border: none;
+      box-shadow: none;
+    }
+}
