@@ -54,6 +54,8 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
     gap: 20px;
     padding: 0 30px;
     align-items: start;

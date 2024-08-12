@@ -67,7 +67,7 @@
                     <div class="card-body">
                       <div class="date-channel">
                         <div class="post-date"><?php echo $post_date; ?></div>
-                        <div class="post-channel"><a href="<?php echo esc_url($custom_fields['Channel Url']); ?>"><?php echo esc_html($custom_fields['Channel']); ?></a></div>
+                        <div class="post-channel"><?php echo esc_html($custom_fields['Channel']); ?></div>
                       </div>
                         <div class="accordion-header">
                           <i class="fas fa-chevron-right toggle-icon"></i>
