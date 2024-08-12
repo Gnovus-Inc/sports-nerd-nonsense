@@ -17,14 +17,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Custom Post Type Accordion</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
   <script>
   $(function() {
-    $(".accordion-header").on("click", function() {
+  $(".accordion-header").on("click", function() {
       var content = $(this).next(".accordion-content");
       content.slideToggle();
-      $(this).find(".toggle-icon").toggleClass("expanded");
+      $(this).toggleClass("expanded");
     });
   });
   </script>
@@ -69,7 +70,7 @@
                         <div class="post-channel"><a href="<?php echo esc_url($custom_fields['Channel Url']); ?>"><?php echo esc_html($custom_fields['Channel']); ?></a></div>
                       </div>
                         <div class="accordion-header">
-                          <span class="toggle-icon">▼</span>
+                          <i class="fas fa-chevron-right toggle-icon"></i>
                           <h2 class="card-title"><?php the_title(); ?></h2>
                         </div>
                         <div class="accordion-content" id="accordion-<?php the_ID(); ?>">

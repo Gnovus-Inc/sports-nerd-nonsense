@@ -23,7 +23,14 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 25px;
 }
+.post-channel {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
 .accordion-content {
     display: none;
 }
@@ -34,18 +41,22 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
     min-height: 250px;
+    display: flex;
+    flex-direction: column;
 }
 .card:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 .card-body {
     padding: 15px;
+    flex-grow: 1;
 }
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 0 30px;
+    align-items: start;
 }
 .card-title {
     padding: 0 15px;
@@ -75,12 +86,29 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
 .pagination a:hover {
     background-color: #f1f1f1;
 }
+
+.accordion-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.toggle-icon {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+  .accordion-header.expanded .toggle-icon {
+    transform: rotate(90deg);
+  }
+
 @media (max-width: 992px) {
     .grid-container {
       grid-template-columns: repeat(2, 1fr);
     }
 }
 @media (max-width: 768px) {
+    .post-channel {
+        font-size: 14px;
+    }
     .grid-container {
       grid-template-columns: 1fr;
     }
