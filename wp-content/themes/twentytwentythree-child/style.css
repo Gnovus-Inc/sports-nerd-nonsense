@@ -1,5 +1,5 @@
 /*
-Theme Name: Sports Nerds Nonsense
+Theme Name: Sports Nerds Nonsense Child Theme
 Theme URI: https://wordpress.org/themes/twentytwentythree-child
 Author: the WordPress team
 Author URI: https://wordpress.org
@@ -117,5 +117,79 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     .card {
       border: none;
       box-shadow: none;
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    color: #fff;
+}
+
+.logo a {
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.primary-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.primary-nav li {
+    margin: 0 15px;
+}
+
+.primary-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.primary-nav a:hover {
+    color: #ddd;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .primary-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+    }
+
+    .primary-nav.active ul {
+        display: flex;
+    }
+
+    .primary-nav li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .burger-menu {
+        display: flex;
     }
 }
