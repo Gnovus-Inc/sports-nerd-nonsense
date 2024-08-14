@@ -15,6 +15,7 @@
 
 <header class="site-header">
     <div class="header-container">
-        <?php get_template_part( 'components/site-nav' ); ?>
+    <?php get_template_part( 'components/mobile-menu' ); ?>
+    <?php get_template_part( 'components/site-nav' ); ?>
     </div>
 </header>

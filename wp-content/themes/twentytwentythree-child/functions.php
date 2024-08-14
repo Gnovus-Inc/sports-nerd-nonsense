@@ -23,3 +23,8 @@ function sports_nerds_enqueue_styles() {
    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'sports_nerds_enqueue_styles' );
+
+function my_theme_enqueue_scripts() {
+    wp_enqueue_script( 'menu-toggle-script', get_template_directory_uri() . '/assets/fonts/dist/js/main.js', array(), null, true );
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );

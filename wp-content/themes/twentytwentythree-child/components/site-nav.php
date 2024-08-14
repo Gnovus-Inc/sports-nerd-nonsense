@@ -26,12 +26,11 @@
 		?>
 	</div>
 
-	<!-- <button data-toggle="menu">
-		<p>Menu</p>
+	<button data-toggle="menu">
 		<div class="hamburger--holder">
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
-	</button> -->
+	</button>
 </nav>
