@@ -120,6 +120,15 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     }
 }
 
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -127,6 +136,23 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     padding: 15px 30px;
     background-color: white;
     color: #fff;
+    position: sticky;
+}
+.site-nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.menu ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+.menu .page_item {
+    padding: 0 10px;
 }
 
 .logo a {
