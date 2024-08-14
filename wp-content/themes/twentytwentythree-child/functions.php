@@ -7,7 +7,6 @@
 if ( ! function_exists( 'sports_nerds_theme_setup' ) ) :
     function sports_nerds_theme_setup() {
 
-        // Registrar menús
         register_nav_menus(
             array(
                 'primary' => esc_html__( 'Primary Menu', 'sports-nerds-nosense' ),
