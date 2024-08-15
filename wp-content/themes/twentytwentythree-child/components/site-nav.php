@@ -18,7 +18,7 @@
 	<div class="site-nav-menu">
 		<?php
 			$args = array(
-				'theme_location' => 'primary-menu',
+				'theme_location' => 'primary',
 				'container'      => false,
 				'menu_class'     => 'menu',
 			);
