@@ -9,8 +9,8 @@ if ( ! function_exists( 'sports_nerds_theme_setup' ) ) :
 
         register_nav_menus(
             array(
-                'primary' => esc_html__( 'Primary Menu', 'sports-nerds-nosense' ),
-                'footer'  => esc_html__( 'Footer Menu', 'sports-nerds-nosense' ),
+                'primary' => esc_html__( 'Primary Menu', 'twentytwentythree-child' ),
+                'footer'  => esc_html__( 'Footer Menu', 'twentytwentythree-child' ),
             )
         );
 
