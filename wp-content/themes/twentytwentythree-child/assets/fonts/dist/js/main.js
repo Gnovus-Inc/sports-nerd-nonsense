@@ -24,14 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     menuItems.forEach(item => {
         item.addEventListener('click', function(e) {
-            e.preventDefault(); // Evita que el enlace redirija
-
+            e.preventDefault();
             const parentLi = this.parentElement;
 
-            // Alterna la clase 'open'
             parentLi.classList.toggle('open');
 
-            // Cierra otros submenús si no es el actual
             const otherOpenItems = document.querySelectorAll('.menu__mobile .menu li.open');
             otherOpenItems.forEach(openItem => {
                 if (openItem !== parentLi) {

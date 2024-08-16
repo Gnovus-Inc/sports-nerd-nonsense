@@ -551,7 +551,6 @@ footer {
 }
 
 
-/* Estilos generales para el menú en móviles */
 .menu__mobile .menu {
     list-style: none;
     padding: 0;
@@ -560,7 +559,7 @@ footer {
 
 .menu__mobile .menu li {
     border-bottom: 1px solid #444;
-    position: relative; /* Necesario para posicionar la flechita */
+    position: relative;
 }
 
 .menu__mobile .menu li a {
@@ -578,31 +577,26 @@ footer {
     background-color: #444;
 }
 
-/* Ocultar submenús por defecto en móviles */
 .menu__mobile .menu li .sub-menu {
     display: none;
-    padding-left: 20px; /* Indentación para submenús */
+    padding-left: 20px;
 }
 
-/* Muestra el submenú cuando el padre tiene la clase 'open' */
 .menu__mobile .menu li.open > .sub-menu {
     display: block;
 }
 
-/* Indicador de submenú: flechita */
 .menu__mobile .menu li a::after {
-    content: "\25BC"; /* Triángulo hacia abajo */
+    content: "\25BC";
     margin-left: auto;
     font-size: 0.8rem;
     transition: transform 0.3s ease;
 }
 
-/* Rotar flechita cuando el submenú está abierto */
 .menu__mobile .menu li.open > a::after {
     transform: rotate(180deg);
 }
 
-/* Ajustes adicionales para la visualización en móviles */
 @media (max-width: 768px) {
     .site-nav-menu {
         display: none;
