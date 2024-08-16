@@ -8,9 +8,11 @@
 
 ?>
 <section class="menu__mobile">
-	<a class="site__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<?php bloginfo('name'); ?>
-	</a>
+	<div class="mobile-logo">
+		<a class="site__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<?php bloginfo('name'); ?>
+		</a>
+	</div>
     <button class="menu-close">
         <p>Close</p>
         <div class="hamburger--holder">
@@ -20,7 +22,7 @@
     </button>
 	<?php
 		$args = array(
-			'theme_location' => 'header-menu',
+			'theme_location' => 'primary',
 			'container'      => false,
 			'menu_class'     => 'menu',
 		);
