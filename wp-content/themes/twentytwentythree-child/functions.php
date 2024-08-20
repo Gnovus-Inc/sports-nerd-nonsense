@@ -27,7 +27,7 @@ function sports_nerds_enqueue_styles() {
     wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),
-        wp_get_theme()->get('1.0.0')
+        '0.0.1'
     );
 
 }
